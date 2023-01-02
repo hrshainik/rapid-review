@@ -6,7 +6,7 @@
     This is a simple solution for your comment section(ecommerce comment, blog comment, etc).
     <br />
     <br />
-    <a href="https://rapidreview.vercel.app/">View Demo</a>
+    <a href="https://rapid-review.vercel.app/">View Demo</a>
     ·
     <a href="https://github.com/hrshainik/rapid-review/issues">Report Bug</a>
     ·
