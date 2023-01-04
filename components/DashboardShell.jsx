@@ -24,7 +24,7 @@ const DashboardShell = ({ children }) => {
         px={8}
       >
         <Stack isInline spacing={4} align="center">
-          <Link href="#">Feedback</Link>
+          <Link href="/">Feedback</Link>
           <Link href="#">Sites</Link>
         </Stack>
         <Flex alignItems="center">

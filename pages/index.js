@@ -1,6 +1,7 @@
 import EmptyState from "@/components/EmptyState";
 import { Button, Flex, Heading, Text } from "@chakra-ui/react";
 import Head from "next/head";
+import Link from "next/link";
 import { useAuth } from "../lib/auth";
 
 export default function Home() {
@@ -29,6 +30,7 @@ export default function Home() {
         ) : (
           <Button onClick={(e) => auth.signinWithGithub()}>Sign In</Button>
         )}
+        <Link href="/dashboard">Dashboard</Link>
       </Flex>
     </div>
   );
