@@ -1,3 +1,4 @@
+import EmptyState from "@/components/EmptyState";
 import { Button, Flex, Heading, Text } from "@chakra-ui/react";
 import Head from "next/head";
 import { useAuth } from "../lib/auth";
@@ -21,12 +22,13 @@ export default function Home() {
         justifyContent="center"
       >
         <Heading>Rapid Review</Heading>
-        {!auth.user && (
-          <Button onClick={(e) => auth.signinWithGithub()}>Sign In</Button>
-        )}
         {auth.user && <Text>{auth.user.email}</Text>}
         {auth.user && <Text>{auth.user.name}</Text>}
-        {auth.user && <Button onClick={(e) => auth.signout()}>Sign Out</Button>}
+        {auth.user ? (
+          <Button onClick={(e) => auth.signout()}>Sign Out</Button>
+        ) : (
+          <Button onClick={(e) => auth.signinWithGithub()}>Sign In</Button>
+        )}
       </Flex>
     </div>
   );
