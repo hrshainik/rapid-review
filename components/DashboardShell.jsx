@@ -31,21 +31,11 @@ const DashboardShell = ({ children }) => {
           <Link mr={4} href="#">
             Account
           </Link>
-          <Avatar size="sm" src={auth.user.photoURL} />
+          <Avatar size="sm" src={auth.user?.photoURL} />
         </Flex>
       </Flex>
-      <Flex backgroundColor="gray.100" p={8} height="100%">
+      <Flex backgroundColor="gray.100" p={8} height="100vh">
         <Flex maxWidth="800px" ml="auto" mr="auto" direction="column" w="100%">
-          <Breadcrumb>
-            <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink color="gray.700" fontSize="sm">
-                Sites
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
-          <Heading color="black" mb={4}>
-            Sites
-          </Heading>
           {children}
         </Flex>
       </Flex>

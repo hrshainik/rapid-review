@@ -1,3 +1,4 @@
+import { useAuth } from "@/lib/auth";
 import { createSite } from "@/lib/db";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
@@ -15,25 +16,45 @@ const {
   Input,
   ModalFooter,
   useDisclosure,
+  useToast,
 } = require("@chakra-ui/react");
 
-const AddSiteModal = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+const AddSiteModal = ({ children }) => {
+  const auth = useAuth();
 
   const initialRef = useRef(null);
+
+  const toast = useToast();
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   // const finalRef = useRef(null);
 
   const { handleSubmit, register, reset } = useForm();
-  const onSubmit = (values) => {
-    createSite(values);
-    // onClose();
+
+  const onSubmit = ({ name, url }) => {
+    createSite({
+      authorId: auth.user.uid,
+      createdAt: new Date().toISOString(),
+      name,
+      url,
+    });
+    toast({
+      title: "Success",
+      description: "We've added your site.",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+      position: "top",
+    });
+    onClose();
     reset();
   };
 
   return (
     <>
       <Button fontWeight={600} maxW="200px" onClick={onOpen}>
-        Add Your First Site
+        {children}
       </Button>
 
       <Modal
@@ -52,7 +73,7 @@ const AddSiteModal = () => {
               <Input
                 ref={initialRef}
                 placeholder="My Site"
-                {...register("site", { required: true })}
+                {...register("name", { required: true })}
               />
             </FormControl>
 
@@ -60,7 +81,7 @@ const AddSiteModal = () => {
               <FormLabel>Link</FormLabel>
               <Input
                 placeholder="https://website.com"
-                {...register("link", { required: true })}
+                {...register("url", { required: true })}
               />
             </FormControl>
           </ModalBody>
