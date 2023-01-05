@@ -1,11 +1,12 @@
 import React from "react";
 import NextLink from "next/link";
 import { Box, Link } from "@chakra-ui/react";
-import { parseISO, format } from "date-fns";
+import { format, parseISO } from "date-fns";
 
 import { Table, Tr, Th, Td } from "./Table";
 
 const SiteTable = ({ sites }) => {
+  console.log(sites);
   return (
     <Box overflowX="scroll">
       <Table w="full">
@@ -27,9 +28,9 @@ const SiteTable = ({ sites }) => {
                   as={`/site/${site.id}`}
                   passHref
                 >
-                  <Link id={`site-table-link-${index}`} fontWeight="medium">
-                    {site.name}
-                  </Link>
+                  {/* <Link id={`site-table-link-${index}`} fontWeight="medium"> */}
+                  {site.name}
+                  {/* </Link> */}
                 </NextLink>
               </Td>
               <Td>
@@ -43,12 +44,12 @@ const SiteTable = ({ sites }) => {
                   as={`/site/${site.id}`}
                   passHref
                 >
-                  <Link color="blue.500" fontWeight="medium">
-                    View Feedback
-                  </Link>
+                  {/* <Link color="blue.500" fontWeight="medium"> */}
+                  View Feedback
+                  {/* </Link> */}
                 </NextLink>
               </Td>
-              <Td>{format(parseISO(site?.createdAt), "P")}</Td>
+              <Td>{format(parseISO(site.createdAt), "P")}</Td>
               <Td>Delete</Td>
             </Box>
           ))}

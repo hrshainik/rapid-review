@@ -2,6 +2,7 @@ import { useAuth } from "@/lib/auth";
 import { createSite } from "@/lib/db";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
+import { mutate } from "swr";
 
 const {
   Button,
@@ -33,12 +34,14 @@ const AddSiteModal = ({ children }) => {
   const { handleSubmit, register, reset } = useForm();
 
   const onSubmit = ({ name, url }) => {
-    createSite({
+    const newSite = {
       authorId: auth.user.uid,
       createdAt: new Date().toISOString(),
       name,
       url,
-    });
+    };
+
+    const { id } = createSite(newSite);
     toast({
       title: "Success",
       description: "We've added your site.",
@@ -47,13 +50,30 @@ const AddSiteModal = ({ children }) => {
       isClosable: true,
       position: "top",
     });
+
+    mutate(
+      "/api/sites",
+      async (data) => {
+        return { sites: [{ id, ...newSite }, ...data.sites] };
+      },
+      false
+    );
+
     onClose();
     reset();
   };
 
   return (
     <>
-      <Button fontWeight={600} maxW="200px" onClick={onOpen}>
+      <Button
+        fontWeight={600}
+        maxW="200px"
+        onClick={onOpen}
+        color="white"
+        _hover={{ bg: "gray.700" }}
+        backgroundColor="gray.900"
+        _active={{ bg: "gray.900", transform: "scale(0.95)" }}
+      >
         {children}
       </Button>
 

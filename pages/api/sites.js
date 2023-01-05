@@ -1,4 +1,4 @@
-import dbAdmin from "@/lib/firebase-admin";
+import { dbAdmin } from "@/lib/firebase-admin";
 
 export default async function handler(_, res) {
   const snapshot = await dbAdmin.collection("sites").get();
