@@ -6,7 +6,7 @@ import { format, parseISO } from "date-fns";
 import { Table, Tr, Th, Td } from "./Table";
 
 const SiteTable = ({ sites }) => {
-  console.log(sites);
+  // console.log(sites);
   return (
     <Box overflowX="scroll">
       <Table w="full">
@@ -45,7 +45,7 @@ const SiteTable = ({ sites }) => {
                   passHref
                 >
                   {/* <Link color="blue.500" fontWeight="medium"> */}
-                  View Feedback
+                  View Review
                   {/* </Link> */}
                 </NextLink>
               </Td>
