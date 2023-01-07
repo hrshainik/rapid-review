@@ -16,6 +16,15 @@ export default function Home() {
           content="Just one div can solve your complex commenting problem"
         />
         <link rel="icon" href="/favicon.ico" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (document.cookie && document.cookie.includes('RapidReviewAuth')) {
+                window.location.href = "/dashboard"
+              }
+            `,
+          }}
+        />
       </Head>
       <Flex
         direction="column"
