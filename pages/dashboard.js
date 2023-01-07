@@ -9,9 +9,10 @@ import SiteTable from "@/components/SiteTable";
 import fetcher from "utlis/fetcher";
 
 const Dashboard = () => {
-  const auth = useAuth();
+  const { user } = useAuth();
+  console.log(user);
 
-  const { data } = useSWR("/api/sites", fetcher);
+  const { data } = useSWR(user ? ["/api/sites", user.token] : null, fetcher);
 
   if (!data) {
     return (

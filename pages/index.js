@@ -1,11 +1,12 @@
 import EmptyState from "@/components/EmptyState";
-import { Button, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import Head from "next/head";
 import Link from "next/link";
 import { useAuth } from "../lib/auth";
 
 export default function Home() {
-  const auth = useAuth();
+  const { user, signin, signup, signout, signinWithGithub, signinWithGoogle } =
+    useAuth();
   return (
     <div>
       <Head>
@@ -21,16 +22,22 @@ export default function Home() {
         alignItems="center"
         minH="100vh"
         justifyContent="center"
+        gap={4}
       >
         <Heading>Rapid Review</Heading>
-        {auth.user && <Text>{auth.user.email}</Text>}
-        {auth.user && <Text>{auth.user.name}</Text>}
-        {auth.user ? (
-          <Button onClick={(e) => auth.signout()}>Sign Out</Button>
+        {user && <Text>{user.email}</Text>}
+        {user && <Text>{user.name}</Text>}
+        {user ? (
+          <Button onClick={(e) => signout()}>Sign Out</Button>
         ) : (
-          <Button onClick={(e) => auth.signinWithGithub()}>Sign In</Button>
+          <Flex gap={4}>
+            <Button onClick={(e) => signinWithGithub()}>GitHub</Button>
+            <Button onClick={(e) => signinWithGoogle()}>Google</Button>
+          </Flex>
         )}
-        <Link href="/dashboard">Dashboard</Link>
+        <Link href="/dashboard">
+          <Button>Dashboard</Button>
+        </Link>
       </Flex>
     </div>
   );
