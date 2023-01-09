@@ -33,19 +33,21 @@ export default function Home() {
         gap={4}
       >
         <Heading>Rapid Review</Heading>
-        {user && <Text>{user.email}</Text>}
-        {user && <Text>{user.name}</Text>}
-        {user ? (
-          <Button onClick={(e) => signout()}>Sign Out</Button>
-        ) : (
+        <Text width="90%" maxWidth="700px" align="center">
+          Rapid Review was built as part of React 2025. It is the easiest way to
+          add comments or reviews to your static site. Try it out by leaving a
+          comment below. After the comment is approved, it will display below.
+        </Text>
+        {!user ? (
           <Flex gap={4}>
             <Button onClick={(e) => signinWithGithub()}>GitHub</Button>
             <Button onClick={(e) => signinWithGoogle()}>Google</Button>
           </Flex>
+        ) : (
+          <Link href="/dashboard">
+            <Button>Dashboard</Button>
+          </Link>
         )}
-        <Link href="/dashboard">
-          <Button>Dashboard</Button>
-        </Link>
       </Flex>
     </div>
   );

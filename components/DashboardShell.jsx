@@ -4,6 +4,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
+  Button,
   Flex,
   Heading,
   Stack,
@@ -24,13 +25,13 @@ const DashboardShell = ({ children }) => {
         px={8}
       >
         <Stack isInline spacing={4} align="center">
-          <Link href="/">Feedback</Link>
+          <Link href="/dashboard">Feedback</Link>
           <Link href="/dashboard">Sites</Link>
         </Stack>
         <Flex alignItems="center">
-          <Link mr={4} href="/" onClick={() => auth.signout()}>
+          <Button mr={4} onClick={(e) => auth.signout()}>
             Logout
-          </Link>
+          </Button>
           <Avatar size="sm" src={auth.user?.photoURL} />
         </Flex>
       </Flex>

@@ -67,7 +67,6 @@ const AddSiteModal = ({ children }) => {
     <>
       <Button
         fontWeight={600}
-        maxW="200px"
         onClick={onOpen}
         color="white"
         _hover={{ bg: "gray.700" }}
