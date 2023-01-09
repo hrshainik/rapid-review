@@ -32,9 +32,7 @@ export async function getStaticProps({ params }) {
 
 const SiteReview = ({ reviews }) => {
   const [allReviews, setAllReviews] = useState(reviews);
-  // console.log(allReviews);
   const { user } = useAuth();
-  // console.log(user);
   const router = useRouter();
   const inputEl = useRef(null);
 

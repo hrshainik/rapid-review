@@ -10,7 +10,6 @@ import fetcher from "utlis/fetcher";
 
 const Dashboard = () => {
   const { user } = useAuth();
-  // console.log(user);
 
   const { data } = useSWR(user ? ["/api/sites", user.token] : null, fetcher);
 

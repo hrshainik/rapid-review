@@ -5,8 +5,7 @@ import Link from "next/link";
 import { useAuth } from "../lib/auth";
 
 export default function Home() {
-  const { user, signin, signup, signout, signinWithGithub, signinWithGoogle } =
-    useAuth();
+  const { user, signout, signinWithGithub, signinWithGoogle } = useAuth();
   return (
     <div>
       <Head>
