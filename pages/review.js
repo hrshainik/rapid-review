@@ -1,23 +1,25 @@
 import DashboardShell from "@/components/DashboardShell";
 import EmptyState from "@/components/EmptyState";
-import Head from "next/head";
-import { useAuth } from "../lib/auth";
 import useSWR from "swr";
 import SiteTableHeader from "@/components/SiteTableHeader";
 import SiteTableSkeleton from "@/components/SiteTableSkeleton";
-import SiteTable from "@/components/SiteTable";
+import ReviewTable from "@/components/ReviewTable";
 import fetcher from "utlis/fetcher";
+import { useAuth } from "@/lib/auth";
+import ReviewTableHeader from "@/components/ReviewTableHeader";
+import ReviewEmptyState from "@/components/ReviewEmptyState";
+import ReviewTableSkeleton from "@/components/ReviewTableSkeleton";
 
-const Dashboard = () => {
+const Review = () => {
   const { user } = useAuth();
   // console.log("Token", user.token);
-  const { data } = useSWR(user ? ["/api/sites", user.token] : null, fetcher);
-
+  const { data } = useSWR(user ? ["/api/reviews", user.token] : null, fetcher);
+  console.log("Review Page", data);
   if (!data) {
     return (
       <DashboardShell>
-        <SiteTableHeader />
-        <SiteTableSkeleton />
+        <ReviewTableHeader />
+        <ReviewTableSkeleton />
       </DashboardShell>
     );
   }
@@ -33,10 +35,14 @@ const Dashboard = () => {
 
   return (
     <DashboardShell>
-      <SiteTableHeader />
-      {data.sites.length ? <SiteTable sites={data.sites} /> : <EmptyState />}
+      <ReviewTableHeader />
+      {data.reviews?.length ? (
+        <ReviewTable allReview={data.reviews} />
+      ) : (
+        <ReviewEmptyState />
+      )}
     </DashboardShell>
   );
 };
 
-export default Dashboard;
+export default Review;

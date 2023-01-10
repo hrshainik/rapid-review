@@ -18,6 +18,7 @@ const {
   ModalFooter,
   useDisclosure,
   useToast,
+  Text,
 } = require("@chakra-ui/react");
 
 const AddSiteModal = ({ children }) => {
@@ -31,7 +32,12 @@ const AddSiteModal = ({ children }) => {
 
   // const finalRef = useRef(null);
 
-  const { handleSubmit, register, reset } = useForm();
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = ({ name, url }) => {
     const newSite = {
@@ -80,7 +86,9 @@ const AddSiteModal = ({ children }) => {
         initialFocusRef={initialRef}
         // finalFocusRef={finalRef}
         isOpen={isOpen}
-        onClose={onClose}
+        onClose={() => {
+          onClose(), reset();
+        }}
       >
         <ModalOverlay />
         <ModalContent as="form" onSubmit={handleSubmit(onSubmit)}>
@@ -92,16 +100,27 @@ const AddSiteModal = ({ children }) => {
               <Input
                 ref={initialRef}
                 placeholder="My Site"
-                {...register("name", { required: true })}
+                {...register("name", { required: "Name is required" })}
               />
+              {errors.name && (
+                <Text color="red.400">{errors.name?.message}</Text>
+              )}
             </FormControl>
 
             <FormControl mt={4}>
               <FormLabel>Link</FormLabel>
               <Input
                 placeholder="https://website.com"
-                {...register("url", { required: true })}
+                {...register("url", {
+                  required: "Link is required",
+                  pattern: {
+                    value:
+                      /^(https?:\/\/)?(www\.)?([a-zA-Z0-9]+(-[a-zA-Z0-9]+)*\.)+[a-z]{2,}(\/[\w-]+)*?$/,
+                    message: "Please enter a valid URL",
+                  },
+                })}
               />
+              {errors.url && <Text color="red.400">{errors.url.message}</Text>}
             </FormControl>
           </ModalBody>
 
