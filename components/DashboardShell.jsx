@@ -25,14 +25,13 @@ const DashboardShell = ({ children }) => {
         px={8}
       >
         <Stack isInline spacing={4} align="center">
-          <Link href="/review">Reviews</Link>
           <Link href="/dashboard">Sites</Link>
+          <Link href="/review">Reviews</Link>
         </Stack>
         <Flex alignItems="center">
-          <Button mr={4} onClick={(e) => auth.signout()}>
-            Logout
-          </Button>
-          <Avatar size="sm" src={auth.user?.photoURL} />
+          <Link href="/account">
+            <Avatar size="sm" src={auth.user?.photoURL} />
+          </Link>
         </Flex>
       </Flex>
       <Flex backgroundColor="gray.100" p={8} height="100vh">

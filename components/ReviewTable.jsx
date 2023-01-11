@@ -1,7 +1,6 @@
 import React from "react";
-import NextLink from "next/link";
-import { Box, Code, Link } from "@chakra-ui/react";
-import { format, parseISO } from "date-fns";
+import { Box, Code, IconButton, Switch } from "@chakra-ui/react";
+// import { DeleteIcon } from "@chakra-ui/icon";
 
 import { Table, Tr, Th, Td } from "./Table";
 
@@ -35,7 +34,12 @@ const ReviewTable = ({ allReview }) => {
                   {review.route || "/"}
                 </Code>
               </Td>
-              <Td>{review.status}</Td>
+              <Td>
+                <Switch
+                  color="green"
+                  defaultChecked={review.status === "active"}
+                />
+              </Td>
               <Td>Delete</Td>
             </Box>
           ))}
