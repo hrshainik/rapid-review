@@ -1,6 +1,5 @@
 import { useAuth } from "@/lib/auth";
-import { Avatar, Flex, Stack } from "@chakra-ui/react";
-import Link from "next/link";
+import { Avatar, Flex } from "@chakra-ui/react";
 import NextLink from "next/link";
 import React from "react";
 

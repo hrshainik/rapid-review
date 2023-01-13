@@ -3,7 +3,7 @@ import { Box, Code, IconButton, Switch } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icon";
 
 import { Table, Tr, Th, Td } from "./Table";
-import DeleteReviewButton from "./DeleteReviewButton";
+import DeleteReviewButton from "@/components/DeleteReviewButton";
 
 const ReviewTable = ({ allReview }) => {
   // console.log(sites);
