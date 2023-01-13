@@ -21,24 +21,26 @@ const SkeletonRow = ({ width }) => (
 
 const ReviewTableSkeleton = () => {
   return (
-    <Table>
-      <thead>
-        <Tr>
-          <Th>Name</Th>
-          <Th>Review</Th>
-          <Th>Route</Th>
-          <Th>Visible</Th>
-          <Th width="50px">{""}</Th>
-        </Tr>
-      </thead>
-      <tbody>
-        <SkeletonRow width="75px" />
-        <SkeletonRow width="125px" />
-        <SkeletonRow width="50px" />
-        <SkeletonRow width="100px" />
-        <SkeletonRow width="75px" />
-      </tbody>
-    </Table>
+    <Box overflowX="scroll">
+      <Table w="full">
+        <thead>
+          <Tr>
+            <Th>Name</Th>
+            <Th>Review</Th>
+            <Th>Route</Th>
+            <Th>Visible</Th>
+            <Th width="50px">{""}</Th>
+          </Tr>
+        </thead>
+        <tbody>
+          <SkeletonRow width="75px" />
+          <SkeletonRow width="125px" />
+          <SkeletonRow width="50px" />
+          <SkeletonRow width="100px" />
+          <SkeletonRow width="75px" />
+        </tbody>
+      </Table>
+    </Box>
   );
 };
 

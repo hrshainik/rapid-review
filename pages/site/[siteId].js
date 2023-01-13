@@ -63,13 +63,7 @@ const SiteReview = ({ reviews }) => {
       // siteId={siteId}
       // route={route}
       />
-      <Box
-        display="flex"
-        mx={4}
-        flexDirection="column"
-        width="full"
-        maxWidth="700px"
-      >
+      <Box display="flex" flexDirection="column" width="full" maxWidth="700px">
         <Box as="form" onSubmit={onSubmit}>
           <FormControl mb={8}>
             <Textarea
@@ -79,8 +73,20 @@ const SiteReview = ({ reviews }) => {
               isDisabled={!user}
               h="100px"
             />
-            <Button mt={2} fontWeight="medium" type="submit">
-              Add Review
+            <Button
+              type="submit"
+              // isDisabled={!siteData || !feedbackData}
+              backgroundColor="gray.900"
+              color="white"
+              fontWeight="medium"
+              mt={4}
+              _hover={{ bg: "gray.700" }}
+              _active={{
+                bg: "gray.800",
+                transform: "scale(0.95)",
+              }}
+            >
+              Leave Review
             </Button>
           </FormControl>
         </Box>

@@ -1,15 +1,7 @@
 import { useAuth } from "@/lib/auth";
-import {
-  Avatar,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  Button,
-  Flex,
-  Heading,
-  Stack,
-} from "@chakra-ui/react";
+import { Avatar, Flex, Stack } from "@chakra-ui/react";
 import Link from "next/link";
+import NextLink from "next/link";
 import React from "react";
 
 const DashboardShell = ({ children }) => {
@@ -19,23 +11,47 @@ const DashboardShell = ({ children }) => {
     <Flex direction="column">
       <Flex
         backgroundColor="white"
-        alignItems="center"
-        justifyContent="space-between"
-        py={4}
-        px={8}
+        mb={[8, 16]}
+        w="full"
+        borderTop="5px solid #0AF5F4"
       >
-        <Stack isInline spacing={4} align="center">
-          <Link href="/dashboard">Sites</Link>
-          <Link href="/review">Reviews</Link>
-        </Stack>
-        <Flex alignItems="center">
-          <Link href="/account">
-            <Avatar size="sm" src={auth.user?.photoURL} />
-          </Link>
+        <Flex
+          alignItems="center"
+          justifyContent="space-between"
+          pt={4}
+          pb={4}
+          maxW="1250px"
+          margin="0 auto"
+          w="full"
+          px={8}
+          h="60px"
+        >
+          <Flex align="center" gap={4}>
+            {/* <NextLink href="/" passHref>
+              <Icon name="" size="24px" mr={8} />
+            </NextLink> */}
+            <NextLink href="/dashboard" passHref>
+              Sites
+            </NextLink>
+            <NextLink href="/review" passHref>
+              Reviews
+            </NextLink>
+          </Flex>
+          <Flex justifyContent="center" alignItems="center">
+            <NextLink href="/account" passHref>
+              <Avatar size="sm" src={auth.user?.photoURL} />
+            </NextLink>
+          </Flex>
         </Flex>
       </Flex>
-      <Flex backgroundColor="gray.100" p={8} height="100vh">
-        <Flex maxWidth="800px" ml="auto" mr="auto" direction="column" w="100%">
+      <Flex p={4}>
+        <Flex
+          margin="0 auto"
+          direction="column"
+          maxW="1250px"
+          px={[0, 8, 8]}
+          w="100%"
+        >
           {children}
         </Flex>
       </Flex>
