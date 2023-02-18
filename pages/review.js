@@ -14,7 +14,7 @@ const Review = () => {
   const { user } = useAuth();
   // console.log("Token", user.token);
   const { data } = useSWR(user ? ["/api/reviews", user.token] : null, fetcher);
-  console.log("Review Page", data);
+  // console.log("Review Page", data);
   if (!data) {
     return (
       <DashboardShell>

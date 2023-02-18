@@ -60,8 +60,9 @@ const SettingsTable = ({ stripeRole, children }) => (
         >
           Settings
         </Text>
-        <Badge h="1rem" variantColor="blue">
+        <Badge h="1rem" colorScheme="blue" variant="solid">
           {/* {stripeRole} */}
+          Role
         </Badge>
       </Flex>
     </Flex>

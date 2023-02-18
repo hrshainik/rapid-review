@@ -30,8 +30,6 @@ const AddSiteModal = ({ children }) => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  // const finalRef = useRef(null);
-
   const {
     handleSubmit,
     register,
@@ -39,7 +37,7 @@ const AddSiteModal = ({ children }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = ({ name, url }) => {
+  const onSubmit = async ({ name, url }) => {
     const newSite = {
       authorId: auth.user.uid,
       createdAt: new Date().toISOString(),
@@ -48,6 +46,7 @@ const AddSiteModal = ({ children }) => {
     };
 
     const { id } = createSite(newSite);
+
     toast({
       title: "Success",
       description: "We've added your site.",

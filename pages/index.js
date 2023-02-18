@@ -31,6 +31,7 @@ export default function Home() {
         alignItems="center"
         justifyContent="center"
         gap={4}
+        minH="100vh"
       >
         <Heading>Rapid Review</Heading>
         <Text width="90%" maxWidth="700px" align="center" mb={4}>

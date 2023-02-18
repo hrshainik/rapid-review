@@ -8,8 +8,6 @@ import {
   Box,
 } from "@chakra-ui/react";
 
-import AddSiteModal from "./AddSiteModal";
-
 const ReviewTableHeader = () => (
   <Box mx={4}>
     <Breadcrumb>
