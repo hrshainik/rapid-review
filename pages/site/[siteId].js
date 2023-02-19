@@ -28,7 +28,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: { reviews },
-    // revalidate: 1,
+    revalidate: 1,
   };
 }
 
